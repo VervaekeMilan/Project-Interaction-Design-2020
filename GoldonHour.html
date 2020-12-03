@@ -15,15 +15,31 @@
         <!-- <img src="..\EindopdrachtInteractionDesign\img\Sunset.png" alt="Beautiful Sunset" >   -->
         <h1>Today's golden hours at your location are: </h1>
 
-        <div>
+        <!-- <div>
             <input  type="radio" id="12" name="notation" value="12" checked>
             <label for="12" >12h Notation</label><br>
         </div>
         <div class="c-label c-label--option"> 
             <input type="radio" id="24" name="notation" value="24">
             <label for="24">24h Notation</label><br>
+        </div> -->
+
+        <div class="container togglebody">
+
+            <form class="toggle ">
+    
+                <input type="radio" id="choice1" name="choice" value="creative">
+                <label for="choice1">12h notation</label>
+    
+                <input type="radio" id="choice2" name="choice" value="productive">
+                <label for="choice2">Quality</label>
+    
+                <div id="flap"><span class="content">24h notation</span></div>
+    
+            </form>
+    
         </div>
-        
+
         <div style="position:relative">
             <div class="c-goldenhour__line" >
                 <div class="c-horizon">
@@ -60,11 +76,11 @@
                     <!-- style="position:static"-->
                 </div>   
 
-        </div> 
-        <p class="c-centeralise">
-            <span class="js-countdown">It's currently golden hour! Take some amazing pictures while you're out!</span>    
-        </p>
-
+        </div class="c-centeralise"> 
+            <p >
+                <span class="js-countdown">It's currently golden hour! Take some amazing pictures while you're out!</span>    
+            </p>
+        </div>
       
     </main>
 </body>

@@ -19,8 +19,22 @@
 #Variables
 \*------------------------------------*/
 
+
 :root {
   /* colors */
+/* forms */
+--global-label-color: var(--global-color-neutral-xx-dark);
+--global-placeholder-color: var(--global-color-neutral-x-light);
+--global-input-backgroundColor: White;
+--global-input-color: var(--global-color-neutral-xxxx-dark);
+--global-input-borderColor: var(--global-color-neutral-xxx-light);
+--global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+--global-input-focus-borderColor: var(--global-color-alpha);
+--global-input-error-borderColor: var(--global-color-error);
+--global-input-focus-boxShadowSpread: 0 0 0 3px;
+--global-input-focus-boxShadowColor: var(--global-color-alpha-x-transparent);
+--global-input-error-boxShadowColor: var(--global-color-error-x-transparent);
+
   --color-light: #fff;
   --color-dark:#46535e;
 
@@ -47,7 +61,7 @@ html {
     line-height: 1.5;
     font-family: 'Work Sans', Helvetica, arial, sans-serif;
     box-sizing: border-box;
-    color: var(--color-front);
+    color: #000);
     background-color: var(--color-back);
     /* font-feature-settings:"zero"; */
     -webkit-font-smoothing: antialiased;
@@ -88,7 +102,6 @@ body {
   background-image: url("../img/beach.png");
   background-size: cover;
   height: 100vh;
-  margin: 0;
 }
 
 img {
@@ -233,9 +246,11 @@ input::placeholder {
     Website main logo
 */
 .item-a {
+    width: 240px;
   grid-area: mockup;
 }
 .item-b {
+    padding-right: 10px;
   grid-area: paragraph;
 }
 .item-c {
@@ -245,16 +260,97 @@ input::placeholder {
   grid-area: googleplay;
 }
 
+
 .container {
   display: grid;
   /* 1/2vh 1/4vh 1/4vh */
   /*4/5vh 1/5vh*/
-  grid-template-columns: 576px 288px 288px; 
-  grid-template-rows: 922px 988px;
-  /* column-gap:; */
+  /* grid-template-columns: 576px 288px 288px; 
+  grid-template-rows: 922px 988px; */
+  column-gap: 2.5rem;
+  padding: 6rem 30rem 6rem 30rem;
   grid-template-areas: 
-      "mockup" "paragraph" "paragraph"
-      "mockup" "appstore" "googleplay";
+      "mockup paragraph paragraph"
+      "mockup appstore googleplay";
+}
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding-left: 1rem;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+.c-centeralise{
+    display: flex;
+    justify-content: start;
+    /* align-items: start;*/
+    /* padding-right: 1rem; */
+}
+
+.c-form-field {
+    position: relative;
+}
+
+.c-form-field--option {
+    display: flex;
+    align-items: center;
+}
+
+/*
+    Component: Input
+    ---
+    Class to put on all input="text" like form inputs
+*/
+
+.c-input {
+    --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border-radius: var(--input-borderRadius, var(--global-borderRadius));
+    border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
+    background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
+    color: var(--global-input-color);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(var(--global-baseline) * 3);
+    padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
+    outline: none;
+    transition: var(--input-transition);
+}
+.c-label {
+    margin-bottom: 0;
+    font-size: 14px;
+    padding-bottom: var(--global-whitespace-sm);    
+    line-height: calc(var(--global-baseline) * 2);
+    color: var(--label-color, var(--global-label-color));
+}
+
+.c-label__error-message {
+    font-weight: 600;
+	float: right;
+	display: none;
+}
+
+.c-label__error-message.is-visible {
+	display: block;
 }
 
 .c-logo {

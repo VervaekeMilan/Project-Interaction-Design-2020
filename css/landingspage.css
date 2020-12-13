@@ -3,492 +3,618 @@
 \*------------------------------------*/
 
 @font-face {
-  font-family: "Inter Web";
-  font-weight: 400;
-  src: url("../fonts/Inter-Regular.woff2") format("woff2")
-}
-
-@font-face {
-  font-family: "Inter Web";
-  font-weight: 500;
-  src: url("../fonts/Inter-SemiBold.woff2") format("woff2")
-}
-
-
-/*------------------------------------*\
-#Variables
-\*------------------------------------*/
-
-
-:root {
-  /* colors */
-/* forms */
---global-label-color: var(--global-color-neutral-xx-dark);
---global-placeholder-color: var(--global-color-neutral-x-light);
---global-input-backgroundColor: White;
---global-input-color: var(--global-color-neutral-xxxx-dark);
---global-input-borderColor: var(--global-color-neutral-xxx-light);
---global-input-hover-borderColor: var(--global-color-neutral-xx-light);
---global-input-focus-borderColor: var(--global-color-alpha);
---global-input-error-borderColor: var(--global-color-error);
---global-input-focus-boxShadowSpread: 0 0 0 3px;
---global-input-focus-boxShadowColor: var(--global-color-alpha-x-transparent);
---global-input-error-boxShadowColor: var(--global-color-error-x-transparent);
-
-  --color-light: #fff;
-  --color-dark:#46535e;
-
-  --color-front:var(--color-dark);
-  --color-back: var(--color-light);
-}
-
-.is-night{
-    --color-front:var(--color-light);
-    --color-back: var(--color-dark);
-}
-/*------------------------------------*\
-#GENERIC
-\*------------------------------------*/
-
-/*
-    Generic: Page
-    ---
-    Global page styles + universal box-sizing:
-*/
-
-html {
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: 'Work Sans', Helvetica, arial, sans-serif;
-    box-sizing: border-box;
-    color: #000;
-    background-color: var(--color-back);
-    /* font-feature-settings:"zero"; */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
-/*
-* Remove text-shadow in selection highlight:
-* https://twitter.com/miketaylr/status/12228805301
-*
-* Customize the background color to match your design.
-*/
-
-
-
-::selection {
-    background:var(--color-front);
-    color: var(--color-back);
-    text-shadow: none;
-}
-
-/*------------------------------------*\
-#Elements
-\*------------------------------------*/
-
-/*
-Elements: Images
----
-Default markup for images to make them responsive
-*/
-body {
-  background-image: url("../img/beach.png");
-  background-size: cover;
-  min-height: 100vh;
-  min-width: 100;
-  margin:0;
-}
-
-img {
-    max-width: 100%;
-    vertical-align: top;
-}
-
-/*
-    Elements: typography
-    ---
-    Default markup for typographic elements
-*/
-
-
-h1,
-h2,
-h3 {
-    font-weight: 700;
-    
-}
-
-h1 {
-    font-size: 36px;
-    line-height: 48px;
-    margin: 0 0 24px;
-}
-
-h2 {
-    font-size: 32px;
-    line-height: 40px;
-    margin: 0 0 24px;
-}
-
-h3 {
-    font-size: 26px;
-    line-height: 32px;
-    margin: 0 0 24px;
-}
-
-h4,
-h5,
-h6 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    margin: 0 0 24px;
-}
-
-p,
-ol,
-ul,
-dl,
-table,
-address,
-figure {
-    margin: 0 0 24px;
-}
-
-ul,
-ol {
-    padding-left: 24px;
-}
-
-li ul,
-li ol {
-    margin-bottom: 0;
-}
-
-blockquote {
-    font-style: normal;
-    font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
-}
-
-blockquote * {
-    font-size: inherit;
-    line-height: inherit;
-}
-
-figcaption {
+    font-family: "Inter Web";
     font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    margin-top: 8px;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: LightGrey;
-    margin: 0 0 24px;
-}
-
-a {
-    color: red;
-    outline-color: red;
-    outline-width: medium;
-    outline-offset: 2px;
-}
-
-a:visited,
-a:active {
-    color: red;
-}
-
-a:hover,
-a:focus {
-    color: red;
-}
-
-label,
-input {
-    display: block;
-
-}
-
-select {
-    width: 100%;
-}
-
-input::placeholder {
-    color: gray;
-}
-
-/*------------------------------------*\
-#OBJECTS
-\*------------------------------------*/
-
-/*
-    Object: Button reset
-    ---
-    Small button reset object
-*/
-/*------------------------------------*\
-#COMPONENTS
-\*------------------------------------*/
-
-/*
-    Component: Logo
-    ---
-    Website main logo
-*/
-.item-a {
-    width: 240px;
-  grid-area: mockup;
-}
-.item-b {
-    padding-right: 10px;
-  grid-area: paragraph;
-}
-.item-c {
-  grid-area: appstore;
-}
-.item-d {
-  grid-area: googleplay;
-}
-
-
-.container {
-  display: grid;
-  /* 1/2vh 1/4vh 1/4vh */
-  /*4/5vh 1/5vh*/
-  /* grid-template-columns: 576px 288px 288px; 
-  grid-template-rows: 922px 988px; */
-  column-gap: 2.5rem;
-  padding: 6rem 30rem 6rem 30rem;
-  grid-template-areas: 
-      "mockup paragraph paragraph"
-      "mockup appstore googleplay";
-}
-.o-button-reset {
-    border: none;
-    margin: 0;
-    padding-left: 1rem;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-
-    /* inherit font & color from ancestor */
-    color: inherit;
-    font: inherit;
-
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
-
-    /* Corrects font smoothing for webkit */
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-
-    /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
-}
-
-.c-centeralise{
-    display: flex;
-    justify-content: start;
-    /* align-items: start;*/
-    /* padding-right: 1rem; */
-}
-
-.c-form-field {
-    position: relative;
-}
-
-.c-form-field--option {
-    display: flex;
-    align-items: center;
-}
-
-/*
-    Component: Input
-    ---
-    Class to put on all input="text" like form inputs
-*/
-
-.c-input {
-    --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 100%;
-    border-radius: var(--input-borderRadius, var(--global-borderRadius));
-    border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
-    background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
-    color: var(--global-input-color);
-    font-family: inherit;
-    font-size: 16px;
-    line-height: calc(var(--global-baseline) * 3);
-    padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
-    outline: none;
-    transition: var(--input-transition);
-}
-.c-label {
-    margin-bottom: 0;
-    font-size: 14px;
-    padding-bottom: var(--global-whitespace-sm);    
-    line-height: calc(var(--global-baseline) * 2);
-    color: var(--label-color, var(--global-label-color));
-}
-
-.c-label__error-message {
-    font-weight: 600;
-	float: right;
-	display: none;
-}
-
-.c-label__error-message.is-visible {
-	display: block;
-}
-
-.c-logo {
-
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: normal;
-  display: flex;
-  align-items: center;
+    src: url("../fonts/Inter-Regular.woff2") format("woff2")
+  }
   
-}
-.c-option--hidden:checked + .c-custom-option {
+  @font-face {
+    font-family: "Inter Web";
+    font-weight: 500;
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2")
+  }
+  
+  
+  /*------------------------------------*\
+  #Variables
+  \*------------------------------------*/
+  
+  
+  :root {
+    /* colors */
+  /* forms */
+  --global-label-color: var(--global-color-neutral-xx-dark);
+  --global-placeholder-color: var(--global-color-neutral-x-light);
+  --global-input-backgroundColor: White;
+  --global-input-color: var(--global-color-neutral-xxxx-dark);
+  --global-input-borderColor: var(--global-color-neutral-xxx-light);
+  --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+  --global-input-focus-borderColor: var(--global-color-alpha);
+  --global-input-error-borderColor: var(--global-color-error);
+  --global-input-focus-boxShadowSpread: 0 0 0 3px;
+  --global-input-focus-boxShadowColor: var(--global-color-alpha-x-transparent);
+  --global-input-error-boxShadowColor: var(--global-color-error-x-transparent);
+  
+    --color-light: #fff;
+    --color-dark:#46535e;
+  
+    --color-front:var(--color-dark);
+    --color-back: var(--color-light);
+  }
+  
+  .is-night{
+      --color-front:var(--color-light);
+      --color-back: var(--color-dark);
+  }
+  /*------------------------------------*\
+  #GENERIC
+  \*------------------------------------*/
+  
   /*
-    Do magic stuff here, for example:
-    
+      Generic: Page
+      ---
+      Global page styles + universal box-sizing:
   */
-  background-color: red;
-}
-
-.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
-  /*
-    Do magic stuff here, for example:
-    fill: blue;
-  */
-  background-color: red;
-}
-
-/*
-    Component: App
-    ---
-    Main app wrapper
-*/
-.c-app{
-  max-width: 29em;
-  padding: 2em;
-  margin: 0 auto;
-  /*min-height: 100vh;*/
-  display: flex;
-  flex-direction: column;
-}
-
-.c-app__summary{
-  font-size: 28px;
-  line-height: 40px;
-}
-/*------------------------------------*\
-#UTILITIES
-\*------------------------------------*/
-
-/*
-    Utilities: Mute
-    Mute with opacity
-*/
-.u-muted{
-  opacity: var(--global-muted-opacity);
-}
-
-
-/*------------------------------------*\
-#STATES
-\*------------------------------------*/
-
-/*
-  Change the theme using CSS vars.
-*/
-
-/* Night version: just switch the light and dark vars */
-
-/*------------------------------------*\
-#MEDIA
-\*------------------------------------*/
-
-/*
-  Print styles.
-  ---
-  Inlined to avoid the additional HTTP request:
-  http://www.phpied.com/delay-loading-your-print-css/
-*/
-
-@media print {
+  
+  html {
+      font-size: 16px;
+      line-height: 1.5;
+      font-family: 'Work Sans', Helvetica, arial, sans-serif;
+      /* box-sizing: border-box; */
+      color: #000;
+      background: var(--color-back);
+      /* font-feature-settings:"zero"; */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  
+      background-image: url("../img/beach.png");
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  
   *,
   *:before,
   *:after {
-      background: transparent !important;
-      color: #000 !important;
-      /* Black prints faster:
-      http://www.sanbeiji.com/archives/953 */
-      box-shadow: none !important;
-      text-shadow: none !important;
+      box-sizing: inherit;
   }
-  a,
-  a:visited {
-      text-decoration: underline;
-  }
-  a[href]:after {
-      content: " (" attr(href) ")";
-  }
-  abbr[title]:after {
-      content: " (" attr(title) ")";
-  }
+  
   /*
-  * Don't show links that are fragment identifiers,
-  * or use the `javascript:` pseudo protocol
+  * Remove text-shadow in selection highlight:
+  * https://twitter.com/miketaylr/status/12228805301
+  *
+  * Customize the background color to match your design.
   */
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-      content: "";
+  
+  
+  
+  ::selection {
+      background:var(--color-front);
+      color: var(--color-back);
+      text-shadow: none;
   }
-  pre {
-      white-space: pre-wrap !important;
-  }
-  pre,
-  blockquote {
-      border: 1px solid #999;
-      page-break-inside: avoid;
-  }
+  
+  /*------------------------------------*\
+  #Elements
+  \*------------------------------------*/
+  
   /*
-  * Printing Tables:
-  * http://css-discuss.incutio.com/wiki/Printing_Tables
+  Elements: Images
+  ---
+  Default markup for images to make them responsive
   */
-  thead {
-      display: table-header-group;
+  body {
+      display: grid;
+      grid-template-columns: 5% auto 5%;
+      grid-template-rows: 5% auto 5%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
   }
-  tr,
+  
   img {
-      page-break-inside: avoid;
+      max-width: 100%;
+      vertical-align: top;
   }
+  
+  /*
+      Elements: typography
+      ---
+      Default markup for typographic elements
+  */
+  
+  
+  h1,
+  h2,
+  h3 {
+      font-weight: 700;
+      
+  }
+  
+  h1 {
+      font-size: 36px;
+      line-height: 48px;
+      margin: 0 0 24px;
+  }
+  
+  h2 {
+      font-size: 32px;
+      line-height: 40px;
+      margin: 0 0 24px;
+  }
+  
+  h3 {
+      font-size: 26px;
+      line-height: 32px;
+      margin: 0 0 24px;
+  }
+  
+  h4,
+  h5,
+  h6 {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      margin: 0 0 24px;
+  }
+  
   p,
-  h2,
-  h3 {
-      orphans: 3;
-      widows: 3;
+  ol,
+  ul,
+  dl,
+  table,
+  address,
+  figure {
+      margin: 0 0 24px;
   }
-  h2,
-  h3 {
-      page-break-after: avoid;
+  
+  ul,
+  ol {
+      padding-left: 24px;
   }
-}
+  
+  li ul,
+  li ol {
+      margin-bottom: 0;
+  }
+  
+  blockquote {
+      font-style: normal;
+      font-size: 23px;
+      line-height: 32px;
+      margin: 0 0 24px;
+  }
+  
+  blockquote * {
+      font-size: inherit;
+      line-height: inherit;
+  }
+  
+  figcaption {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 8px;
+  }
+  
+  hr {
+      border: 0;
+      height: 1px;
+      background: LightGrey;
+      margin: 0 0 24px;
+  }
+  
+  a {
+      color: red;
+      outline-color: red;
+      outline-width: medium;
+      outline-offset: 2px;
+  }
+  
+  a:visited,
+  a:active {
+      color: red;
+  }
+  
+  a:hover,
+  a:focus {
+      color: red;
+  }
+  
+  label,
+  input {
+      display: block;
+  
+  }
+  
+  select {
+      width: 100%;
+  }
+  
+  input::placeholder {
+      color: gray;
+  }
+  
+  /*------------------------------------*\
+  #OBJECTS
+  \*------------------------------------*/
+  
+  /*
+      Object: Button reset
+      ---
+      Small button reset object
+  */
+  /*------------------------------------*\
+  #COMPONENTS
+  \*------------------------------------*/
+  
+  /*
+      Component: Logo
+      ---
+      Website main logo
+  */
+  .item-a {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      width: 240px;
+      grid-area: mockup;
+      grid-row: 1;
+  }
+  .item-b {
+      padding-right: 10px;
+    grid-area: paragraph;
+  }
+  .item-c {
+    grid-area: appstore;
+  }
+  .item-d {
+    grid-area: googleplay;
+  }
+  
+  
+  
+  .container {
+    display: grid;
+    grid-template-rows: auto auto;
+    /* 1/2vh 1/4vh 1/4vh */
+    /*4/5vh 1/5vh*/
+    /* grid-template-columns: 576px 288px 288px; 
+    grid-template-rows: 922px 988px; */
+    /* padding: 6rem 30rem 6rem 30rem; */
+    grid-gap: 35px;
+    grid-template-areas: 
+        "mockup paragraph paragraph"
+        "mockup appstore googleplay";
+  }
+  .landing-container{
+      grid-row: 2;
+      grid-column: 2;
+  }
+  
+  .container-text{
+      grid-row: 2;
+  }
+  
+  .container-email{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .container-store{
+      display: flex;
+  }
+  
+  .title{
+      /* text-align: center; */
+  }
+  
+  .o-button-reset {
+      border: none;
+      margin: 0;
+      padding-left: 1rem;
+      width: auto;
+      overflow: visible;
+      background: transparent;
+  
+      /* inherit font & color from ancestor */
+      color: inherit;
+      font: inherit;
+  
+      /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+      line-height: normal;
+  
+      /* Corrects font smoothing for webkit */
+      -webkit-font-smoothing: inherit;
+      -moz-osx-font-smoothing: inherit;
+  
+      /* Corrects inability to style clickable `input` types in iOS */
+      -webkit-appearance: none;
+  }
+  .c-centeralise{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* align-items: start;*/
+      /* padding-right: 1rem; */
+  }
+  
+  .c-form-field {
+      position: relative;
+  }
+  
+  .c-form-field--option {
+      display: flex;
+      align-items: center;
+  }
+  
+  /*
+      Component: Input
+      ---
+      Class to put on all input="text" like form inputs
+  */
+  
+  .c-input {
+      --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      border-radius: var(--input-borderRadius, var(--global-borderRadius));
+      border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
+      background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
+      color: var(--global-input-color);
+      font-family: inherit;
+      font-size: 16px;
+      line-height: calc(var(--global-baseline) * 3);
+      padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
+      outline: none;
+      transition: var(--input-transition);
+  }
+  .c-label {
+      margin-bottom: 0;
+      font-size: 14px;
+      padding-bottom: var(--global-whitespace-sm);    
+      line-height: calc(var(--global-baseline) * 2);
+      color: var(--label-color, var(--global-label-color));
+  }
+  
+  .c-label__error-message {
+      font-weight: 600;
+      float: right;
+      display: none;
+  }
+  
+  .c-label__error-message.is-visible {
+      display: block;
+  }
+  
+  .c-logo {
+  
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    
+  }
+  .c-option--hidden:checked + .c-custom-option {
+    /*
+      Do magic stuff here, for example:
+      
+    */
+    background-color: red;
+  }
+  
+  .c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
+    /*
+      Do magic stuff here, for example:
+      fill: blue;
+    */
+    background-color: red;
+  }
+  
+  /*
+      Component: App
+      ---
+      Main app wrapper
+  */
+  .c-app{
+    max-width: 29em;
+    padding: 2em;
+    margin: 0 auto;
+    /*min-height: 100vh;*/
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .c-app__summary{
+    font-size: 28px;
+    line-height: 40px;
+  }
+  /*------------------------------------*\
+  #UTILITIES
+  \*------------------------------------*/
+  
+  /*
+      Utilities: Mute
+      Mute with opacity
+  */
+  .u-muted{
+    opacity: var(--global-muted-opacity);
+  }
+  
+  
+  /*------------------------------------*\
+  #STATES
+  \*------------------------------------*/
+  
+  /*
+    Change the theme using CSS vars.
+  */
+  
+  /* Night version: just switch the light and dark vars */
+  
+  /*------------------------------------*\
+  #MEDIA
+  \*------------------------------------*/
+  
+  /*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+  */
+  
+  @media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+  }
+  
+  @media(min-width: 780px){
+      body{
+          grid-template-columns: 5% auto 5%;
+          grid-template-rows: 5% auto 5%;
+      }
+  
+      .landing-container{
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: auto;
+      }
+  
+      .item-a{
+          grid-column: 1;
+          grid-row: 1;
+          display: flex;
+      }
+      .container-text{
+          /* text-align: center; */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          grid-column: 2;
+          grid-row: 1;
+      }
+  
+      @media(min-width: 1110px){
+          body{
+              grid-template-columns: 10% auto 10%;
+              grid-template-rows: 10% auto 10%;
+          }
+      
+          .landing-container{
+              grid-template-columns: auto auto;
+          }
+      
+          .item-a{
+              grid-column: 1;
+              grid-row: 1;
+              display: flex;
+          }
+          .container-text{
+              /* text-align: center; */
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              margin: auto;
+              grid-column: 2;
+              grid-row: 1;
+          }
+      }
+      @media(min-width: 1110px){
+          body{
+              grid-template-columns: 10% auto 10%;
+              grid-template-rows: 10% auto 10%;
+          }
+      
+          .landing-container{
+              grid-template-columns: auto auto;
+          }
+      
+          .item-a{
+              grid-column: 1;
+              grid-row: 1;
+              display: flex;
+          }
+          .container-text{
+              /* text-align: center; */
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              margin: auto;
+              grid-column: 2;
+              grid-row: 1;
+          }
+      }
+  
+      @media(min-width: 1300px){
+          body{
+              grid-template-columns: 25% auto 25%;
+          }
+      }
+  
+  }
+  

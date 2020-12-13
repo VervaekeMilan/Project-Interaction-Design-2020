@@ -475,6 +475,14 @@ input::placeholder {
     padding-top: 32px;
     font-size: 12px;
 }
+
+.c-label{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .c-label__option{
     background-color: #88ccff;
 }

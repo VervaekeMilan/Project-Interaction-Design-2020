@@ -61,11 +61,12 @@ html {
     line-height: 1.5;
     font-family: 'Work Sans', Helvetica, arial, sans-serif;
     box-sizing: border-box;
-    color: #000);
+    color: #000;
     background-color: var(--color-back);
     /* font-feature-settings:"zero"; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
 }
 
 *,
@@ -101,7 +102,9 @@ Default markup for images to make them responsive
 body {
   background-image: url("../img/beach.png");
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+  min-width: 100;
+  margin:0;
 }
 
 img {

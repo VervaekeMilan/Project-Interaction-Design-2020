@@ -299,9 +299,14 @@
   
   .container-email{
       display: flex;
-      flex-direction: row;
+      /*flex-direction: row;*/
       align-items: center;
       /*justify-content: center;*/
+  }
+  .container-validation{
+    display: flex;
+    /*flex-direction: row;*/
+    align-items: center;
   }
   
   .container-store{
@@ -340,6 +345,7 @@
     height: 1.6em;
     padding-right: 1em;
     border-radius: 0 8px 8px 0px;
+    line-height: 1.5;
 
   }
   
@@ -385,7 +391,10 @@
   .c-label__error-message {
       font-weight: 600;
       background-color: rgb(88, 88, 88);
-      padding: 0.3em 1em 0.3em 1em;
+      height: 2em;
+      padding: 0 1em 0 1em;
+      margin-bottom: 1em;
+      line-height: 2;
       border-radius: 8px 8px 8px 8px;
       color: red;
       float: right;

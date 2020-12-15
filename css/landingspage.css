@@ -301,7 +301,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      /*justify-content: center;*/
   }
   
   .container-store{
@@ -334,12 +334,13 @@
       /* Corrects inability to style clickable `input` types in iOS */
       -webkit-appearance: none;
   }
-  .c-centeralise{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* align-items: start;*/
-      /* padding-right: 1rem; */
+  .c-button{
+    
+    background-color: #66CCff;
+    height: 1.6em;
+    padding-right: 1em;
+    border-radius: 0 8px 8px 0px;
+
   }
   
   .c-form-field {
@@ -362,7 +363,7 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      width: 100%;
+      width: 20em;
       border-radius: var(--input-borderRadius, var(--global-borderRadius));
       border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
       background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
@@ -370,7 +371,6 @@
       font-family: inherit;
       font-size: 16px;
       line-height: calc(var(--global-baseline) * 3);
-      padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
       outline: none;
       transition: var(--input-transition);
   }
@@ -384,6 +384,10 @@
   
   .c-label__error-message {
       font-weight: 600;
+      background-color: rgb(88, 88, 88);
+      padding: 0.3em 1em 0.3em 1em;
+      border-radius: 8px 8px 8px 8px;
+      color: red;
       float: right;
       display: none;
   }

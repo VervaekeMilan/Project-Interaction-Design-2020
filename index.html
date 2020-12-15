@@ -8,6 +8,8 @@
     <link rel="icon" type="image/png" sizes="300x300" href="/favicon-32x32.png">
 
     <link rel="stylesheet" href="css/landingspage.css">
+    <script src="./script/validation.js"></script>
+
 </head>
 
 <body>
@@ -27,22 +29,14 @@
                             With GoldenTime you know when to take pictures for the best results. Simply get the coordinates of your desired location and start snapping away!
                         </p>
         
-                        
-                        <!-- <form class="text-container" action="standings.html">
-                            <label for="emailInput" class="text bold">Stay up to date with new changes with our newsletter!</label>
-                            <div class="newsletter-container">
-                              <input type="email" id="emailInput" placeholder="e.g. john@doe.com" class="email-field" required="">
-                              <input type="submit" class="submit-button" value="subscribe">
-                            </div>
-                        </form> -->
-                        <div class="c-centeralise container-email">
+                
+                        <label class="c-label js-email-label" for="username">
+                            <span class="c-label__error-message js-email-error-message">
+                                This field is required
+                            </span>                                
+                        </label>
+                        <div class="container-email">
                             <p class="c-form-field js-email-field container-email">
-                                <!-- <label class="c-label js-email-label" for="username">
-                                    Email address -->
-                                    <span class="c-label__error-message js-email-error-message">
-                                        This field is required
-                                    </span>
-                                <!-- </label> -->
                                 <input class="c-input js-email-input" type="email" name="username" id="username" placeholder="e.g. john@doe.com" required>
                                 <submit class="o-button-reset c-button js-sign-in-button">Submit</submit>
                             </p>

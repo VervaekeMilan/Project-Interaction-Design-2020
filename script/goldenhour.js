@@ -1,117 +1,98 @@
-// _ = helper functions
+
+//Global variables
 let lat = 50.8027841, lon = 3.2097454;
+let TimeModifier;
+let sunrise, sunset;
+let currentSeconds; //time at load webapp
+let secondsAtSunrise;
+let secondsAtSunset;
+let totalMinutes; //difference between sunrise and -set in minutes
+let today;
+let timestamp;
+const updateSun = (sunElement, left, bottom) => {
+	sunElement.style.left = `${left}%`;
+	sunElement.style.bottom = `${bottom}%`; 
 
-// 4 Zet de zon op de juiste plaats en zorg ervoor dat dit iedere minuut gebeurt.
-let placeSunAndStartMoving = (totalMinutes, sunrise) => {
-	console.log("place sun");
-	// In de functie moeten we eerst wat zaken ophalen en berekenen.
-	const sun = document.querySelector('.js-sun');
-	//minutes = document.querySelector('.js-time-left');
-	
-	// Haal het DOM element van onze zon op en van onze aantal minuten resterend deze dag.
-	// Bepaal het aantal minuten dat de zon al op is.
-	
-	/*const now = new Date(), sunriseData = new Date(sunrise * 1000);
-	console.log(sunriseData)
+	if(today.getHours() >= 12)
+			timestamp = `${(today.getHours()-12).toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')} PM`;
+	else timestamp = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')} AM`;
 
-	const minuteSunUp = (now.getHours() * 60 + now.getMinutes() - (sunriseData.getHours() * 60 + sunriseData.getMinutes()));
-
-	const percentage = (100/totalMinutes) * minuteSunUp,
-	sunLeft = percentage
-	sunBottom = percentage < 50 ? percentage * 2 : (100 - percentage) * 2;*/
-
-	// Nu zetten we de zon op de initiële goede positie ( met de functie updateSun ). Bereken hiervoor hoeveel procent er van de totale zon-tijd al voorbij is.
-	// We voegen ook de 'is-loaded' class toe aan de body-tag.
-	// Vergeet niet om het resterende aantal minuten in te vullen.
-	//.innertext = totalMinutes - minuteSunUp;
-	// Nu maken we een functie die de zon elke minuut zal updaten
-	/*const t = setInterval(() => {
-		if (minuteSunUp < 0 || minuteSunUp > totalMinutes) {
-			clearInterval(t);
-			itBeNight();
-		} 
-		else if (minuteSunUp < 0) {
-			itBeNight();
-		}
-		else {
-			itBeDay();*/
-			/*const now = new Date(),
-			left = (100/totalMinutes) * minuteSunUp,
-			bottom = left < 50 ? left * 2 : (100 - left) * 2;*/
-
-			//updateSun(sun, left, bottom, now);
-			updateSun(sun, 8, 0, 0);
-
-			//minutesLeft.innertext = totalMinutes - minuteSunUp;
-			/*minutesSunUp++;*/
-		//}
-	//},60000);
-	// Bekijk of de zon niet nog onder of reeds onder is
-	// Anders kunnen we huidige waarden evalueren en de zon updaten via de updateSun functie.
-	// PS.: vergeet weer niet om het resterend aantal minuten te updaten en verhoog het aantal verstreken minuten.
+	sunElement.setAttribute('data-time', timestamp);
 };
 
-// 5 TODO: maak updateSun functie
-const updateSun = (sunElement, left, bottom, now) => {
-	console.log("updating sun");
-	sunElement.style.left = `${left}%`;
-	sunElement.style.bottom = `${left}%`;
+const moveSun = function(){ //totalMinutes in min / sunrise in sec
+	console.log("sunrise: " + secondsAtSunrise);
+	console.log("sunset: " + secondsAtSunset);
+	console.log("current: " + currentSeconds);
 
-	/*const currentTimeStamp = `${now.getHours().toString.padStart(2,'0')}:${now.getMinutes.toString.padStart(2,'0')}`
-	sunElement.setAttribute('data-time', currentTimeStamp);*/
-}
 
+	const sun = document.querySelector('.js-sun');
+
+	if(secondsAtSunrise <= currentSeconds <= secondsAtSunset){
+		const minutesSunUp = (currentSeconds - secondsAtSunrise) / 60;
+		const percentage = (100 /totalMinutes) * minutesSunUp, //verstreken percentage van de dag
+		sunleft = percentage,
+		sunbottom = percentage < 50? percentage * 2 : (100 - percentage) * 2; //zon movement up down (down after 50% of day has been reached)
+	
+		updateSun(sun, sunleft, sunbottom)
+	};
+	//else sun invisible
+
+
+};
 
 const checkIfGoldenhour = function(sunrise, sunset){
+	console.log(sunset);
+	console.log(sunrise);
+
+	today = new Date();
+	currentSeconds = today.getHours() *3600 -(-(today.getMinutes() * 60)) - (- ( today.getSeconds()));
+	secondsAtSunrise = sunrise.slice(0,1) * 3600 - ( - sunrise.slice(2,4) * 60)   - (-(sunrise.slice(5,7)));
+	secondsAtSunset = (parseInt(sunset.slice(0,1)) - (-12)) * 3600 - ( - sunset.slice(2,4) * 60)   - (-(sunset.slice(5,7))); //PM means add 12
 
 
-	var today = new Date();
-	var currentSeconds = today.getHours() *3600 -(-(today.getMinutes() * 60)) - (- ( today.getSeconds()));
-
-	var secondsAtSunrise = sunrise.slice(0,1) * 3600 - ( - sunrise.slice(2,4) * 60)   - (-(sunrise.slice(5,7)));
-
-	var secondsAtSunset = sunset.slice(0,1) * 3600 - ( - sunset.slice(2,4) * 60)   - (-(sunset.slice(5,7)));
-
-	if(currentSeconds > secondsAtSunrise && currentSeconds - secondsAtSunrise < 3600)
+	if(currentSeconds > secondsAtSunrise && currentSeconds - secondsAtSunrise <= 3600) //als het later is dan sunrise en het verschil is kleiner dan een uur
 	{
 		console.log("smorgens");
-		document.querySelector('.js-countdown').innerHTML = "It's not golden hour currently";
+		document.querySelector('.js-countdown').innerHTML = `It's currently golden hour and it last for ${Math.round((currentSeconds - secondsAtSunset)/60)} more minutes! Take some amazing pictures while you're out!`;
 	}
-	else if(currentSeconds < secondsAtSunset && secondsAtSunset - currentSeconds  < 3600)
+	else if(currentSeconds < secondsAtSunset && secondsAtSunset - currentSeconds  <= 3600) //als het vroeger is dan sunset en het verschil is kleiner dan een uur
 	{
 		console.log("savonds");
-		document.querySelector('.js-countdown').innerHTML = "It's currently golden hour! Take some amazing pictures while you're out!";
+		document.querySelector('.js-countdown').innerHTML = `It's currently golden hour and it last for ${Math.round((secondsAtSunset - currentSeconds)/60)} more minutes! Take some amazing pictures while you're out!`;
 	}
 	else 
 	{
 		console.log("not golden hour");
-		document.querySelector('.js-countdown').innerHTML = "It's not golden hour currently";
+		document.querySelector('.js-countdown').innerHTML = "It isn't golden hour currently.";
 	}
 
-	console.log("y: " + secondsAtSunset);
 
-	//console.log(sunrise);
-	//console.log(sunset);
-	console.log("x: " + currentSeconds);
+	totalMinutes = (secondsAtSunset - secondsAtSunrise) / 60;
 
 }
 
-const getLocation = function(){
-	navigator.geolocation.getCurrentPosition(function(position) {
-		lat = position.coords.latitude;
-		lon = position.coords.longitude;
+const toggleTimes = function(){
+	if(toggle == false)//24h notatie
+	{
+		sunrise = "0" + sunrise.slice(0,4); //remove AM and add 0 in front
+		sunset = (sunset.replace(sunset[0], (sunset[0] -(-12)).toString())).slice(0,5); //remove pm and hours +12
+		timestamp = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')}`;
+	}
+	else //12h notatie
+	{
+    	sunrise = sunrise.slice(1,5) + " AM";
+		sunset = (sunset.replace(sunset.slice(0,2), (parseInt(sunset.slice(0,2)) - 12).toString())) + " PM"; //hours - 12 + " PM";
+		if(today.getHours() >= 12)
+			timestamp = `${(today.getHours()-12).toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')} PM`;
+		else timestamp = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')} AM`;
+		
+	}
 
-	  });
+	document.querySelector('.js-sunrise').innerHTML = sunrise;
+	document.querySelector('.js-sunset').innerHTML = sunset;
+	document.querySelector('.js-sun').setAttribute('data-time', timestamp);
 }
-
-
-const convertToMinutes = function(numberstring){
-	// let minutes;
-	
-	// minutes = parseInt(numberstring.slice(0,2)) * 60 + parseInt(numberstring.slice(3,5));
-	return parseInt(numberstring.slice(0,2)) * 60 + parseInt(numberstring.slice(3,5));
-}
-
 
 let toggle = true;
 listenToClickToggle = function(){
@@ -122,67 +103,91 @@ listenToClickToggle = function(){
 		console.log("click1");
 		if(toggle == true)
 		{
-			document.querySelector('.content').innerHTML = "12h notation";
+			document.querySelector('.content').innerHTML = "24h notation";
 			toggle = false;
-			getAPI(lat, lon);
+			//getAPI(lat, lon);
+			toggleTimes();
 		}
 	})
 	radio2.addEventListener('click', function(e) {
 		console.log("click2");
 		if(toggle == false)
 		{
-			document.querySelector('.content').innerHTML = "24h notation";
+			document.querySelector('.content').innerHTML = "12h notation";
 			toggle = true;
-			getAPI(lat, lon);
+			toggleTimes();
+			//getAPI(lat, lon);
 			
 		}
 	})
 	
 }
 
-let showResult = queryResponse => {
-	console.log("showingresult");
-	let sunrise = queryResponse.results.sunrise, sunset = queryResponse.results.sunset;
+const correctTimes = function(time){// times are returned in GMT, this corrects them to your time zone
+	number = parseInt(time.slice(0,time.indexOf(":")))  + TimeModifier; //time is retured in gmt, add 2
+	
+	if(number >= 12){ //change AM to PM and vice versa
+		number=-12; //lower number by 12 (12.01 PM --> 00.01 PM)
+		if(time.slice(time.indexOf(" ") + 1) == "AM"){
+			time = time.slice(0,time.indexOf(" ")) + " PM";
+		}
+		else time = time.slice(0,time.indexOf(" ")) + " AM"; //(00.01 PM --> 00.01 AM)
+	};
+	//return
+	time = String(number) + time.slice(time.indexOf(":"));
+	return time
+};
+const sliceTimes = function(time){ //slice off seconds
+	time = time.slice(0,time.indexOf(" ") - 3) + time.slice(time.indexOf(" "));
+	return time
+};
 
-	checkIfGoldenhour(sunrise.slice(0,7), sunset.slice(0,7));
+const showResult = (queryResponse) => {
+	//console.log({queryResponse})
+	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
 
-	if(toggle == true)
-	{
-		sunrise = "0" + sunrise.slice(0,4);
-		sunset = (sunset.replace(sunset[0], (sunset[0] -(-12)).toString())).slice(0,5);
-	}
-	else
-	{
-    	sunrise = sunrise.slice(0,4) + " AM";
-		sunset = sunset.slice(0,4) + " PM";
-	}
+	
+	//console.log(typeof(sunrise));
 
-    console.log(sunrise);
-    console.log(sunset);
+	checkIfGoldenhour(sunrise, sunset);
+	
+	sunrise = sliceTimes(sunrise);
+	sunset = sliceTimes(sunset);
 
 	document.querySelector('.js-sunrise').innerHTML = sunrise;
 	document.querySelector('.js-sunset').innerHTML = sunset;
 
-	//const timeDifference = (convertToMinutes(sunset), convertToMinutes(sunrise)) / 60;
-	//console.log(timeDifference)
+	console.log(totalMinutes);
 	
-	//placeSunAndStartMoving(timeDifference, convertToMinutes(sunrise));
+	moveSun();
+}
 
-};
+const getLocation = function(){
+	navigator.geolocation.getCurrentPosition(function(position) {
+		lat = position.coords.latitude;
+		lon = position.coords.longitude;
 
-let getAPI = async(lat, lon) => {
+		//possibly doesn't work correctly when user in different location uses website
+		var Timezone = new Date(Date().toString());
+		TimeModifier = Timezone.getTimezoneOffset() / -60
+		
+	  });
+}
+
+const getAPI = async(lat, lon) => {
 
 	const data = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&fbclid=IwAR3jajk1-TE6lBXYcSRUa9WrbIzPN3Qh4gbPP7ItYu2QkirXYyF2D8wlsmwWeergeven`)
 	.then((r) => r.json())
-	.catch((err) => console.error('An error occured:', err));
+	.catch((err) => console.error('An error occured: ', err));
 
-	getLocation();
+	//console.log(data);
 
 	showResult(data);
 
 };
 
 const init = function(){
+	getLocation()
 	getAPI(lat, lon);
 	listenToClickToggle();
 	console.info("DOM Geladen");

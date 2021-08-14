@@ -1,3 +1,4 @@
+"use strict";
 
 //Global variables
 let lat = 50.8027841, lon = 3.2097454;
@@ -51,8 +52,8 @@ const moveSun = function(){ //totalMinutes in min / sunrise in sec
 		itBeNight();
 		sun.style.visibility = "hidden";
 	};
-	// itBeNight();
-	// sun.style.visibility = "hidden";
+	itBeNight();
+	sun.style.visibility = "hidden";
 
 
 
@@ -112,7 +113,7 @@ const toggleTimes = function(){
 }
 
 let toggle = true;
-listenToClickToggle = function(){
+const listenToClickToggle = function(){
 	const radio1 = document.querySelector(".js-radio1");
 	const radio2 = document.querySelector(".js-radio2");
 
@@ -141,7 +142,7 @@ listenToClickToggle = function(){
 }
 
 const correctTimes = function(time){// times are returned in GMT, this corrects them to your time zone
-	number = parseInt(time.slice(0,time.indexOf(":")))  + TimeModifier; //time is retured in gmt, add 2
+	let number = parseInt(time.slice(0,time.indexOf(":")))  + TimeModifier; //time is retured in gmt, add 2
 	
 	if(number >= 12){ //change AM to PM and vice versa
 		number=-12; //lower number by 12 (12.01 PM --> 00.01 PM)

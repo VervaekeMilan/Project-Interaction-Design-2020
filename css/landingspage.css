@@ -61,13 +61,13 @@
       line-height: 1.5;
       font-family: 'Work Sans', Helvetica, arial, sans-serif;
       /* box-sizing: border-box; */
-      color: #000;
+      color: var(--color-front);
       background: var(--color-back);
       /* font-feature-settings:"zero"; */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
   
-      background-image: url("../img/beach.png");
+      /*background-image: url("../img/beach.png");*/
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
@@ -390,7 +390,8 @@
   
   .c-label__error-message {
       font-weight: 600;
-      background-color: rgb(88, 88, 88);
+      /*background-color: rgb(88, 88, 88);*/
+      
       height: 2em;
       padding: 0 1em 0 1em;
       margin-bottom: 1em;
@@ -487,7 +488,7 @@
     *:before,
     *:after {
         background: transparent !important;
-        color: #000 !important;
+        color:var(--color-front) !important;
         /* Black prints faster:
         http://www.sanbeiji.com/archives/953 */
         box-shadow: none !important;

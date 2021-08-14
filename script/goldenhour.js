@@ -9,6 +9,15 @@ let secondsAtSunset;
 let totalMinutes; //difference between sunrise and -set in minutes
 let today;
 let timestamp;
+
+let itBeNight = () => {
+	document.querySelector('html').classList.add('is-night');
+}
+
+let itBeDay = () => {
+	document.querySelector('html').classList.remove('is-night');
+}
+
 const updateSun = (sunElement, left, bottom) => {
 	sunElement.style.left = `${left}%`;
 	sunElement.style.bottom = `${bottom}%`; 
@@ -28,15 +37,23 @@ const moveSun = function(){ //totalMinutes in min / sunrise in sec
 
 	const sun = document.querySelector('.js-sun');
 
-	if(secondsAtSunrise <= currentSeconds <= secondsAtSunset){
+	if(secondsAtSunrise <= currentSeconds <= secondsAtSunset){ //als zon op is
+		itBeDay();
+		sun.style.visibility = "visible";
 		const minutesSunUp = (currentSeconds - secondsAtSunrise) / 60;
 		const percentage = (100 /totalMinutes) * minutesSunUp, //verstreken percentage van de dag
 		sunleft = percentage,
 		sunbottom = percentage < 50? percentage * 2 : (100 - percentage) * 2; //zon movement up down (down after 50% of day has been reached)
 	
 		updateSun(sun, sunleft, sunbottom)
+	}
+	else{
+		itBeNight();
+		sun.style.visibility = "hidden";
 	};
-	//else sun invisible
+	// itBeNight();
+	// sun.style.visibility = "hidden";
+
 
 
 };

@@ -29,7 +29,7 @@
     /* opacity */
     --global-muted-opacity: .6;
 
-    --accent: var(--color-dark);
+    --accent: var(--color-front);
     --border-width: 6px;
     --border-radius: 55px;
     --font-size: 12px;
@@ -226,7 +226,11 @@ input::placeholder {
     Small button reset object
 */
 
-
+.rectangle{
+    fill: none;
+    stroke-width:1;
+    stroke:var(--color-front);
+}
 
 .container {
     perspective: 800px;
@@ -298,11 +302,11 @@ input::placeholder {
     border-bottom-right-radius: var(--border-radius);
     transform-style: preserve-3d;
     transform-origin: left;
-    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .0s;*/
+    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .0s;
 }
 
 .toggle>#flap>.content {
-    color: #fff;
+    color: var(--color-back);
     transition: transform 0s linear .0s;
     transform-style: preserve-3d;
 }

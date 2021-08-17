@@ -164,7 +164,8 @@ const showResult = (queryResponse) => {
 	//console.log({queryResponse})
 	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
 
-	
+	console.log(sunset);
+	console.log(sunrise);
 	//console.log(typeof(sunrise));
 
 	checkIfGoldenhour(sunrise, sunset);

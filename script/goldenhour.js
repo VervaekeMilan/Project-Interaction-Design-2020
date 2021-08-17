@@ -52,8 +52,8 @@ const moveSun = function(){ //totalMinutes in min / sunrise in sec
 		itBeNight();
 		sun.style.visibility = "hidden";
 	};
-	itBeNight();
-	sun.style.visibility = "hidden";
+	// itBeNight();
+	// Sun.style.visibility = "hidden";
 
 
 

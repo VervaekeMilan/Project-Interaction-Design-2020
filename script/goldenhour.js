@@ -142,6 +142,7 @@ const listenToClickToggle = function(){
 }
 
 const correctTimes = function(time){// times are returned in GMT, this corrects them to your time zone
+	console.log(time);
 	let number = parseInt(time.slice(0,time.indexOf(":")))  + TimeModifier; //time is retured in gmt, add 2
 	
 	// if(number >= 12){ //change AM to PM and vice versa
@@ -165,8 +166,8 @@ const showResult = (queryResponse) => {
 	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
 	//sunrise = queryResponse.results.sunrise, sunset = queryResponse.results.sunset
 
-	console.log(sunset);
-	console.log(sunrise);
+	// console.log(sunset);
+	// console.log(sunrise);
 	//console.log(typeof(sunrise));
 
 	checkIfGoldenhour(sunrise, sunset);

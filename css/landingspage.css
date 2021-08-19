@@ -370,7 +370,7 @@
       ---
       Class to put on all input="text" like form inputs
   */
-  
+
   .c-input {
       --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
       -webkit-appearance: none;

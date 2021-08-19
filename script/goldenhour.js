@@ -79,7 +79,17 @@ const checkIfGoldenhour = function(sunrise, sunset){
 		console.log("savonds");
 		document.querySelector('.js-countdown').innerHTML = `It's currently golden hour and it last for ${Math.round((secondsAtSunset - currentSeconds)/60)} more minutes! Take some amazing pictures while you're out!`;
 	}
-	else 
+	else if(currentSeconds < secondsAtSunrise)
+	{
+		console.log("not golden hour");
+		document.querySelector('.js-countdown').innerHTML = `It isn't golden hour currently. It starts in ${Math.round((secondsAtSunrise - currentSeconds)/60)} minutes!`;
+	}
+	else if(currentSeconds > secondsAtSunrise && currentSeconds < secondsAtSunset)
+	{
+		console.log("not golden hour");
+		document.querySelector('.js-countdown').innerHTML = `It isn't golden hour currently. It starts in ${Math.round((secondsAtSunset - currentSeconds)/60)} minutes!`;
+	}
+	else
 	{
 		console.log("not golden hour");
 		document.querySelector('.js-countdown').innerHTML = "It isn't golden hour currently.";

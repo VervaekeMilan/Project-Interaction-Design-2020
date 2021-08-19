@@ -144,13 +144,13 @@ const listenToClickToggle = function(){
 const correctTimes = function(time){// times are returned in GMT, this corrects them to your time zone
 	let number = parseInt(time.slice(0,time.indexOf(":")))  + TimeModifier; //time is retured in gmt, add 2
 	
-	if(number >= 12){ //change AM to PM and vice versa
-		number=-12; //lower number by 12 (12.01 PM --> 00.01 PM)
-		if(time.slice(time.indexOf(" ") + 1) == "AM"){
-			time = time.slice(0,time.indexOf(" ")) + " PM";
-		}
-		else time = time.slice(0,time.indexOf(" ")) + " AM"; //(00.01 PM --> 00.01 AM)
-	};
+	// if(number >= 12){ //change AM to PM and vice versa
+	// 	number=-12; //lower number by 12 (12.01 PM --> 00.01 PM)
+	// 	if(time.slice(time.indexOf(" ") + 1) == "AM"){
+	// 		time = time.slice(0,time.indexOf(" ")) + " PM";
+	// 	}
+	// 	else time = time.slice(0,time.indexOf(" ")) + " AM"; //(00.01 PM --> 00.01 AM)
+	// };
 	//return
 	time = String(number) + time.slice(time.indexOf(":"));
 	return time

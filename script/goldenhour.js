@@ -153,12 +153,10 @@ const correctTimes = function(time){// times are returned in GMT, this corrects 
 	// 	else time = time.slice(0,time.indexOf(" ")) + " AM"; //(00.01 PM --> 00.01 AM)
 	// };
 	//return
-	time = String(number) + time.slice(time.indexOf(":"));
-	return time
+	return String(number) + time.slice(time.indexOf(":"));
 };
 const sliceTimes = function(time){ //slice off seconds
-	time = time.slice(0,time.indexOf(" ") - 3) + time.slice(time.indexOf(" "));
-	return time
+	return time.slice(0,time.indexOf(" ") - 3) + time.slice(time.indexOf(" "));
 };
 
 const showResult = (queryResponse) => {

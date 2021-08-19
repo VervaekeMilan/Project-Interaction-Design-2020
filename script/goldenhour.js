@@ -24,7 +24,7 @@ const updateSun = (sunElement, left, bottom) => {
 	sunElement.style.bottom = `${bottom}%`; 
 
 	if(today.getHours() >= 12)
-			timestamp = `${(today.getHours()-12).toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')} PM`;
+			timestamp = `${(today.getHours()).toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')} PM`;
 	else timestamp = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2,'0')} AM`;
 
 	sunElement.setAttribute('data-time', timestamp);
@@ -162,7 +162,8 @@ const sliceTimes = function(time){ //slice off seconds
 
 const showResult = (queryResponse) => {
 	//console.log({queryResponse})
-	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
+	//sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
+	sunrise = queryResponse.results.sunrise, sunset = queryResponse.results.sunset
 
 	console.log(sunset);
 	console.log(sunrise);
@@ -206,7 +207,9 @@ const getAPI = async(lat, lon) => {
 };
 
 const init = function(){
-	getLocation()
+	getLocation();
+	// lat = 47.5615000;
+	// lon = 52.7126000;
 	getAPI(lat, lon);
 	listenToClickToggle();
 	console.info("DOM Geladen");

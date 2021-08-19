@@ -38,7 +38,7 @@ const moveSun = function(){ //totalMinutes in min / sunrise in sec
 
 	const sun = document.querySelector('.js-sun');
 
-	if(secondsAtSunrise <= currentSeconds <= secondsAtSunset){ //als zon op is
+	if(secondsAtSunrise <= currentSeconds && currentSeconds <= secondsAtSunset){ //als zon op is
 		itBeDay();
 		sun.style.visibility = "visible";
 		const minutesSunUp = (currentSeconds - secondsAtSunrise) / 60;
@@ -167,7 +167,7 @@ const sliceTimes = function(time){ //slice off seconds
 const showResult = (queryResponse) => {
 
 	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
-
+	//sunrise = queryResponse.results.sunrise, sunset = queryResponse.results.sunset;
 	checkIfGoldenhour(sunrise, sunset);
 	
 	sunrise = sliceTimes(sunrise);

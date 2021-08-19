@@ -273,7 +273,14 @@
     grid-area: googleplay;
   }
   
-  
+.mdi-36px {
+    font-size: 39px;
+    margin-right: 10px
+}
+
+.container-appstore {
+    margin-top: 150px
+}
   
   .container {
     display: grid;
@@ -370,16 +377,20 @@
       -moz-appearance: none;
       appearance: none;
       width: 20em;
-      border-radius: var(--input-borderRadius, var(--global-borderRadius));
-      border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
+      /*border-radius: var(--input-borderRadius, var(--global-borderRadius));
+      border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));*/
+      border-radius: 8px 0px 0px 8px;
       background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
       color: var(--global-input-color);
       font-family: inherit;
-      font-size: 16px;
+      font-size: 14px;
       line-height: calc(var(--global-baseline) * 3);
-      outline: none;
+      /*outline: none;*/
       transition: var(--input-transition);
   }
+  /* .c-input:hover {
+    background-color: red;
+} */
   .c-label {
       margin-bottom: 0;
       font-size: 14px;

@@ -165,13 +165,8 @@ const sliceTimes = function(time){ //slice off seconds
 };
 
 const showResult = (queryResponse) => {
-	//console.log({queryResponse})
-	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
-	//sunrise = queryResponse.results.sunrise, sunset = queryResponse.results.sunset
 
-	// console.log(sunset);
-	// console.log(sunrise);
-	//console.log(typeof(sunrise));
+	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
 
 	checkIfGoldenhour(sunrise, sunset);
 	
@@ -190,11 +185,6 @@ const getLocation = function(){
 	navigator.geolocation.getCurrentPosition(function(position) {
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
-
-		//possibly doesn't work correctly when user in different location uses website
-		// var Timezone = new Date(Date().toString());
-		// TimeModifier = Timezone.getTimezoneOffset() / -60
-		
 	  });
 }
 
@@ -204,16 +194,12 @@ const getAPI = async(lat, lon) => {
 	.then((r) => r.json())
 	.catch((err) => console.error('An error occured: ', err));
 
-	//console.log(data);
-
 	showResult(data);
 
 };
 
 const init = function(){
 	getLocation();
-	// lat = 47.5615000;
-	// lon = 52.7126000;
 	getAPI(lat, lon);
 	listenToClickToggle();
 	console.info("DOM Geladen");

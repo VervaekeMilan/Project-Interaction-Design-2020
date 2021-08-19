@@ -162,8 +162,8 @@ const sliceTimes = function(time){ //slice off seconds
 
 const showResult = (queryResponse) => {
 	//console.log({queryResponse})
-	//sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
-	sunrise = queryResponse.results.sunrise, sunset = queryResponse.results.sunset
+	sunrise = correctTimes(queryResponse.results.sunrise), sunset = correctTimes(queryResponse.results.sunset);
+	//sunrise = queryResponse.results.sunrise, sunset = queryResponse.results.sunset
 
 	console.log(sunset);
 	console.log(sunrise);
